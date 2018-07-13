@@ -73,6 +73,7 @@ RUN set -x && apt-get -yqq install ruby metasploit-framework
 # kali-linux-voip - Kali Linux VoIP tools
 # kali-linux-web - Kali Linux webapp assessment tools
 # kali-linux-wireless - Kali Linux wireless tools
+# *** They will make your image much larger!
 #
 # Now install the parts of Kali that you need
 RUN apt-get -y install \
