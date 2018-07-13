@@ -51,6 +51,8 @@ RUN apt-get -y install ca-certificates
 RUN apt-get -y install openssl
 RUN apt-get -y install apt-transport-https
 # End pre-https work
+# I do this to deal with corporate proxy infrastructure
+# Begin https work
 RUN echo "deb https://http.kali.org/kali kali-rolling main contrib non-free" > /etc/apt/sources.list && \
     echo "deb-src https://http.kali.org/kali kali-rolling main contrib non-free" >> /etc/apt/sources.list
 RUN set -x && apt-get -yqq install ruby metasploit-framework
