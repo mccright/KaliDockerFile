@@ -36,7 +36,7 @@ or for more details -- Show all containers (default shows just running)
 ```
 docker ps -a
 ```
-Or if you need to know their sized as well  
+Or if you need to know their sizes as well  
 ```
 docker ps -a -s
 ```
