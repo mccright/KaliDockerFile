@@ -32,11 +32,25 @@ If you get back to a given PC and forgot the status of your docker container, se
 ```
 docker ps  
 ```
-
+or for more details -- Show all containers (default shows just running)  
+```
+docker ps -a
+```
+Or if you need to know their sized as well  
+```
+docker ps -a -s
+```
 If you get back to a given PC and forgot the name of a given Docker image:  
 
 ```
 docker image ls  
 ```
- 
+Sometimes you just need to delete some of the chaff  
+```
+docker rm <containerID>
+```
+or  
+```
+docker rmi <imageID>
+```
 Thank you https://www.pentestpartners.com/security-blog/docker-for-hackers-a-pen-testers-guide/ 
