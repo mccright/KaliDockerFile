@@ -34,12 +34,13 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 # Begin pre-https work
 RUN echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" > /etc/apt/sources.list && \
     echo "deb-src http://http.kali.org/kali kali-rolling main contrib non-free" >> /etc/apt/sources.list
-RUN export http_proxy=http://tjlnuxb:byb81!xf@pfgproxy.principal.com:80 
-RUN export https_proxy=http://tjlnuxb:byb81!xf@pfgproxy.principal.com:80
-RUN echo "export http_proxy=http://tjlnuxb:byb81!xf@pfgproxy.principal.com:80" >> /root/.bashrc 
-RUN echo "export https_proxy=http://tjlnuxb:byb81!xf@pfgproxy.principal.com:80" >> /root/.bashrc
-RUN echo "Acquire::http::proxy \"http://tjlnuxb:byb81!xf@pfgproxy.principal.com:80\";"  > /etc/apt/apt.conf.d/80proxy
-RUN echo "Acquire::https::proxy \"http://tjlnuxb:byb81!xf@pfgproxy.principal.com:80\";"  >> /etc/apt/apt.conf.d/80prox
+# Set up your proxy
+RUN export http_proxy=http://user:pass@proxy.domain.com:80 
+RUN export https_proxy=http://user:pass@proxy.domain.com:80 
+RUN echo "export http_proxy=http://user:pass@proxy.domain.com:80 " >> /root/.bashrc 
+RUN echo "export https_proxy=http://user:pass@proxy.domain.com:80 " >> /root/.bashrc
+RUN echo "Acquire::http::proxy \"user:pass@proxy.domain.com:80\";"  > /etc/apt/apt.conf.d/80proxy
+RUN echo "Acquire::https::proxy \"user:pass@proxy.domain.com:80\";"  >> /etc/apt/apt.conf.d/80prox
 ENV DEBIAN_FRONTEND noninteractive
 # Update and apt install programs
 RUN set -x && apt-get -yqq update && apt-get -yqq dist-upgrade && apt-get clean
@@ -102,7 +103,6 @@ RUN touch /root/.ssh/known_hosts
 # Add host keys
 RUN ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
-RUN ssh-keyscan scm.principal.com >> /root/.ssh/known_hosts
 
 # Set entrypoint and working directory
 WORKDIR /root/
