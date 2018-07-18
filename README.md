@@ -22,9 +22,9 @@ docker run -ti -p 80:80 -p 443:443 -v /root/clients:/clients myname/imagename
 You should be ready for work in an environment you understand now.  
 
 So, if it is risk-appropriate to share c:\. on Windows you can run it with something like:  
-'''
-docker run -ti -v c:\\users\\%USERNAME%\\documents:~/docs mrmcustomkalilinux/kali-linux-docker 
-'''
+```
+docker run -ti -v c:\\users\\%USERNAME%\\documents:~/docs mycustomkalilinux/kali-linux-docker 
+```
 I assume that for many docker images in many use cases it is risk-inappropriate to do so.  
 
 If you get back to a given PC and forgot the status of your docker container, see if it is running with:  
