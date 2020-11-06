@@ -39,8 +39,8 @@ RUN export http_proxy=http://user:pass@proxy.domain.com:80
 RUN export https_proxy=http://user:pass@proxy.domain.com:80 
 RUN echo "export http_proxy=http://user:pass@proxy.domain.com:80 " >> /root/.bashrc 
 RUN echo "export https_proxy=http://user:pass@proxy.domain.com:80 " >> /root/.bashrc
-RUN echo "Acquire::http::proxy \"user:pass@proxy.domain.com:80\";"  > /etc/apt/apt.conf.d/80proxy
-RUN echo "Acquire::https::proxy \"user:pass@proxy.domain.com:80\";"  >> /etc/apt/apt.conf.d/80prox
+RUN echo "Acquire::http::proxy \"http://user:pass@proxy.domain.com:80\";"  > /etc/apt/apt.conf.d/80proxy
+RUN echo "Acquire::https::proxy \"https://user:pass@proxy.domain.com:80\";"  >> /etc/apt/apt.conf.d/80prox
 ENV DEBIAN_FRONTEND noninteractive
 # Update and apt install programs
 RUN set -x && apt-get -yqq update && apt-get -yqq dist-upgrade && apt-get clean
